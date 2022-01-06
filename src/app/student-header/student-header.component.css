@@ -1,0 +1,70 @@
+.dropdown:hover>.dropdown-menu {
+    display: block;
+    font-size: 14px;
+  }
+  
+  .dropdown>.dropdown-toggle:active {
+    /*Without this, clicking will make it sticky*/
+      pointer-events: none;
+  }
+  .btn-primarynav {
+    color: #fff;
+    /* background-color: #007bff; */
+    /* border-color: #007bff; */
+}  
+
+.example-container {
+  width: auto;
+  height: 100%;
+  margin: 2px;
+ 
+}
+li, a{
+font-size: 14px;
+}
+a{
+  font-size: 14px;
+  }
+  .footer-color {
+    background: #3f51b5;
+    color: #fff;
+}  
+
+.mat-form-field + .mat-form-field {
+  margin-left: 0px;
+}
+.mat-list-base .mat-list-item .mat-list-item-content, .mat-list-base .mat-list-option .mat-list-item-content {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  box-sizing: border-box;
+  padding: -1px 16px;
+  position: relative;
+  height: inherit;
+  width: 200px;
+}
+
+
+.example-sidenav {
+   user-select: none;
+}
+.full-width {
+  width: 100%;
+}
+.menu-button {
+  transition: 300ms ease-in-out;
+  transform: rotate(0deg);
+}
+.menu-button.rotated {
+  transform: rotate(180deg);
+}
+.submenu {
+  overflow-y: hidden;
+  transition: transform 300ms ease;
+  transform: scaleY(0);
+  transform-origin: top;
+  padding-left: 30px;
+}
+.submenu.expanded {
+  transform: scaleY(1);
+}

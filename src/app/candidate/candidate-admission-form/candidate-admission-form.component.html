@@ -1,0 +1,526 @@
+<div class="container">
+    <div class="col-lg-12">
+        <h1 class="text-center">Admission Form</h1>
+    </div>
+    <form class="form-horizontal" method="post" enctype="multipart/form-data" [formGroup]="admissionForm"
+        (ngSubmit)="onSubmit(admissionForm)" *ngIf="formDisplay">
+        <div class="border border-primary p-2 mb-2">
+            <h3 class="border border-primary mb-4 text-center">Basic Details</h3>
+            <div class="form-row">
+                <div class="col-lg-4">
+                    <label>Course Name/कोर्स का नाम :</label>
+                    <label id="lbl">*</label>
+                </div>
+                <div class="col-lg-8 mb-2">
+
+                    <select class="browser-default custom-select" formControlName="selectCourse" name="selectCourse" style="text-align: center;">
+                        <option [ngValue]="null" selected >----------------- Please Select Your Diploma/Certificate Course ---------------
+                        </option>
+                       
+                        <option *ngFor="let course of courses; let i=index;" [ngValue]="course.course_code">
+                            ({{course.course_code}}) {{course.course_name}}
+                        </option>
+                    </select>
+                    <div *ngIf="f.selectCourse.touched && f.selectCourse.invalid">
+                        <span [ngClass]="'errors'" *ngIf="f.selectCourse.errors">Course selection is required, Please
+                            Select Your Course.</span>
+                    </div>
+                </div>
+
+            </div>
+
+            <div class="form-row">
+                <div class="col-lg-4"></div>
+                <div class="col-lg-8">
+                    <p class="impNoteColor alert alert-warning" role="alert">Before Selection of course please carefully
+                        read the handbook of Meity Project/कोर्स के चयन से पहले कृपया Meity Project की पुस्तिका को ध्यान
+                        से पढ़ें।</p>
+                </div>
+
+            </div>
+            <div class="form-row mb-4">
+                <div class="col-lg-4">
+                    <label>Applicant Name/आवेदक का नाम : </label><label id="lbl">*</label>
+                </div>
+                <div class="col-lg-4  mb-2">
+                    <input class="form-control" formControlName="firstName" placeholder="Enter First Name">
+                    <div *ngIf="f.firstName.touched && f.firstName.invalid">
+                        <span [ngClass]="'errors'" *ngIf="f.firstName.errors">Please Enter First Name.</span>
+                    </div>
+                </div>
+                <div class="col-lg-4 mb-2">
+                    <input class="form-control" formControlName="lastName" placeholder="Enter Last Name">
+                    <div *ngIf="f.lastName.touched && f.lastName.invalid">
+                        <span [ngClass]="'errors'" *ngIf="f.lastName.errors">Please Enter Last Name.</span>
+                    </div>
+                </div>
+
+            </div>
+            <div class="form-row mb-4">
+                <div class="col-lg-4">
+                    <label> Father's Name/पिता का नाम :</label><label id="lbl">*</label>
+                </div>
+                <div class="col-lg-8 mb-2">
+                    <input type="text" formControlName="fatherName" placeholder="Enter Father's Name"
+                        class="form-control" max="25">
+                    <div *ngIf="f.fatherName.touched && f.fatherName.invalid">
+                        <span [ngClass]="'errors'" *ngIf="f.fatherName.errors">Please Enter Father's Name.</span>
+                    </div>
+                </div>
+
+            </div>
+            <div class="form-row mb-4">
+                <div class="col-lg-4">
+                    <label> Mother's Name/माता का नाम : </label><label id="lbl">*</label>
+                </div>
+                <div class="col-lg-8 mb-2">
+                    <input type="text" formControlName="motherName" placeholder="Enter Mother's Name"
+                        class="form-control " max="25">
+                    <div *ngIf="f.motherName.touched && f.motherName.invalid">
+                        <span [ngClass]="'errors'" *ngIf="f.motherName.errors">Please Enter Mother's Name.</span>
+                    </div>
+                </div>
+
+            </div>
+            <div class="form-row mb-4">
+                <div class="col-lg-4">
+                    <label> Date of Birth/जन्म तिथि :</label><label id="lbl">*</label>
+                </div>
+                <div class="col-lg-2 mb-2">
+                    <select name="selectDay" formControlName="selectDay" class="browser-default custom-select" style="text-align: center;">
+                        <option [ngValue]="null" selected>------- Day -------</option>
+                        <option *ngFor="let day of days;" [ngValue]="day">{{day}}</option>
+                    </select>
+                    <div *ngIf="f.selectDay.touched && f.selectDay.invalid">
+                        <span [ngClass]="'errors'" *ngIf="f.selectDay.errors">Please select day.</span>
+                    </div>
+                </div>
+                <div class="col-lg-2 mb-2">
+                    <select name="selectMonth" formControlName="selectMonth" class="browser-default custom-select " style="text-align: center;">
+                        <option [ngValue]="null" selected>------- Month -------</option>
+                        <option *ngFor="let month of months;" [ngValue]="month">{{month.month}}</option>
+                    </select>
+                    <div *ngIf="f.selectMonth.touched && f.selectMonth.invalid">
+                        <span [ngClass]="'errors'" *ngIf="f.selectMonth.errors">Please select month.</span>
+                    </div>
+                </div>
+                <div class="col-lg-2 mb-2">
+                    <select name="selectYear" formControlName="selectYear" class="browser-default custom-select" style="text-align: center;">
+                        <option [ngValue]="null" selected> ------- Year -------</option>
+                        <option *ngFor="let year of years;" [ngValue]="year">{{year}}</option>
+                    </select>
+                    <div *ngIf="f.selectYear.touched && f.selectYear.invalid">
+                        <span [ngClass]="'errors'" *ngIf="f.selectYear.errors">Please select Year.</span>
+                    </div>
+                </div>
+
+
+            </div>
+            <div class="form-row mb-4">
+                <div class="col-lg-4">
+                    <label>Gender/लिंग : </label><label id="lbl">*</label>
+                </div>
+                <div class="col-lg-8 mb-2">
+                    <select name="selectGender"   formControlName="selectGender" class="browser-default custom-select" style="text-align: center;" >                      
+                        <option [ngValue]="null"   selected >------------ Please Select Gender ------------ </option>
+                        <option *ngFor="let gender of genders" [ngValue]="gender">{{gender.name}}</option>
+                    </select>
+                    <div *ngIf="f.selectGender.touched && f.selectGender.invalid">
+                        <span [ngClass]="'errors'" *ngIf="f.selectGender.errors"> Please Select Gender </span>
+                    </div>
+                </div>
+            </div>
+            <div class="form-row mb-4">
+                <div class="col-lg-4">
+                    <label>Category/वर्ग :</label><label id="lbl">*</label>
+                </div>
+                <div class="col-lg-8 mb-2">
+                    <select name="selectCategory" formControlName="selectCategory" (change)="onSelectionCategoryChanged($event)"
+                        class="browser-default custom-select" style="text-align: center;">
+                        <option [ngValue]="null" selected>------------ Please Select category ------------</option>
+                        <option *ngFor="let category of catagories" [ngValue]="category.id">{{category.name}}</option>
+                    </select>
+                    <div *ngIf="f.selectCategory.touched && f.selectCategory.invalid">
+                        <span [ngClass]="'errors'" *ngIf="f.selectCategory.errors">Please select category.</span>
+                    </div>
+                </div>
+
+            </div>
+            <ng-container *ngIf="f.selectCategory.valid">
+                <div class="form-row mb-4">
+                    <div class="col-lg-4"></div>
+                    <div class="col-lg-4 mb-2">
+                        <label>Upload Cast certificate/जाति प्रमाण पत्र अपलोड करे:</label><label id="lbl">*</label>
+                    </div>
+                    <div class="col-lg-4 mb-2">
+                        <input type="file" formControlName="categoryFile" (change)="getaCategoryFile($event)"
+                         class="form-control ">
+                        <div *ngIf="f.categoryFile.touched && f.categoryFile.invalid">
+                            <span [ngClass]="'errors'" *ngIf="f.categoryFile.errors">Please upload casr certificate.</span>
+                        </div>
+                    </div>
+                </div>
+            </ng-container>
+            <div class="form-row">
+                <div class="col-lg-4"></div>
+                <div class="col-lg-8 mb-2">
+                    <p class="impNoteColor alert alert-warning" role="alert"> If you select ST/SC/OBC then please upload
+                        the cast certificate/यदि आप एसटी / एससी / ओबीसी का चयन करते हैं तो कृपया जाति प्रमाण पत्र अपलोड
+                        करें।</p>
+                </div>
+
+            </div>
+            <div class="form-row mb-4">
+                <div class="col-lg-4">
+                    <label>Mobile Number/मोबाइल नंबर :</label><label id="lbl">*</label>
+                </div>
+                <div class="col-lg-8 mb-2">
+                    <input type="text" formControlName="mobileNumber" id="mobileNumber"
+                        placeholder="Enter Mobile Number" class="form-control ">
+                    <div *ngIf="f.mobileNumber.touched && f.mobileNumber.invalid">
+                        <span [ngClass]="'errors'" *ngIf="f.mobileNumber.errors">Please Enter 10 digit Mobile
+                            Number.</span>
+                    </div>
+                </div>
+
+            </div>
+            <div class="form-row mb-4">
+                <div class="col-lg-4">
+                    <label>Email Id/ईमेल आईडी :</label><label id="lbl">*</label>
+                </div>
+                <div class="col-lg-8 mb-2">
+                    <input type="text" formControlName="emailId" placeholder="Enter Email Id" class="form-control "
+                        required>
+                    <div *ngIf="f.emailId.touched && f.emailId.invalid">
+                        <span [ngClass]="'errors'" *ngIf="f.emailId.errors">Please Enter valid Email Id.</span>
+                    </div>
+                </div>
+
+            </div>
+            <div class="form-row mb-4">
+                <div class="col-lg-4">
+                    <label>Aadhar Number/आधार संख्या :</label><label id="lbl">*</label>
+                </div>
+                <div class="col-lg-8 mb-2">
+                    <input type="text" formControlName="aadharNumber" placeholder="Enter Aadhar Number"
+                        class="form-control ">
+                    <div *ngIf="f.aadharNumber.touched && f.aadharNumber.invalid">
+                        <span [ngClass]="'errors'" *ngIf="f.aadharNumber.errors">Please Enter valid Aadhar
+                            Number.</span>
+                    </div>
+                </div>
+
+            </div>
+            <div class="form-row mb-4">
+                <!-- <div class="col-lg-4"></div> -->
+                <div class="col-lg-4 mb-2">
+                    <label> Upload Aadhar Card/आधार कार्ड अपलोड करें :</label><label id="lbl">*</label>
+                </div>
+                <div class="col-lg-8 mb-2">
+                    <input type="file" formControlName="aadharFile" (change)="getaAadharFile($event)"
+                        class="form-control ">
+                    <div *ngIf="f.aadharFile.touched && f.aadharFile.invalid">
+                        <span [ngClass]="'errors'" *ngIf="f.aadharFile.errors">Please upload Aadhar Card.</span>
+                    </div>
+                </div>
+            </div>
+            <div class="form-row mb-4">
+                <div class="col-lg-5">
+                    <label>Upload Applicant Photo/आवेदक का फोटो अपलोड करें :</label><label id="lbl">*</label>
+                </div>
+                <div class="col-lg-7 form-group mb-2">
+                    <input type="file" formControlName="candidatePhoto" (change)="getPhoto($event)"
+                        class="form-control ">
+                    <div *ngIf="f.candidatePhoto.touched && f.candidatePhoto.invalid">
+                        <span [ngClass]="'errors'" *ngIf="f.candidatePhoto.errors">Please upload applicant photo.</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="border border-primary p-2 mb-2" action="address-details">
+            <h3 class="border border-primary text-center mb-4">Address Details</h3>
+            <div class="form-row mb-4">
+                <div class="col-lg-4">
+                    <label>Correspondence Address/वर्तमान पता :</label><label id="lbl">*</label>
+                </div>
+                <div class="col-lg-4 mb-2">
+                    <select name="country_id" formControlName="selectCountry" class="browser-default custom-select"
+                        (ngModelChange)="getStateList($event)" style="text-align: center;">
+                        <option [ngValue]="null" selected>-----Please Select Your Country----- </option>
+                        <option *ngFor="let country of countries" [ngValue]="country.country_id">{{country.country_name}}</option>
+                    </select>
+                    <div *ngIf="f.selectCountry.touched && f.selectCountry.invalid">
+                        <span [ngClass]="'errors'" *ngIf="f.selectCountry.errors">Please select country.</span>
+                    </div>
+                </div>
+                <div class="col-lg-4 mb-2">
+                    <select name="selectState" formControlName="selectState" class="browser-default custom-select"
+                        (ngModelChange)="getCitiesList($event)" style="text-align: center;">
+                        <option [ngValue]="null" selected>-----Please Select Your State----- </option>
+                        <option *ngFor="let state of states" [ngValue]="state.state_id">{{state.state_name}}</option>
+                    </select>
+                    <div *ngIf="f.selectState.touched && f.selectState.invalid">
+                        <span [ngClass]="'errors'" *ngIf="f.selectState.errors">Please select state.</span>
+                    </div>
+                </div>
+            </div>
+            <div class="form-row mb-4">
+                <div class="col-lg-4"></div>
+                <div class="col-lg-4 mb-2">
+                    <select name="selectDistrict" formControlName="selectDistrict"
+                        class="browser-default custom-select" style="text-align: center;">
+                        <option [ngValue]="null" selected>-----Please Select Your District----- </option>
+                        <option *ngFor="let district of districts" [ngValue]="district.city_id">{{district.city_name}}</option>
+                    </select>
+                    <div *ngIf="f.selectDistrict.touched && f.selectDistrict.invalid">
+                        <span [ngClass]="'errors'" *ngIf="f.selectDistrict.errors">Please select district.</span>
+                    </div>
+                </div>
+            </div>
+            <div class="form-row mb-4">
+                <div class="col-lg-4"></div>
+                <div class="col-lg-8 mb-2">
+                    <textarea id="addressLine" formControlName="addressLine" placeholder="House number , city ....."
+                        class="form-control"></textarea>
+                    <div *ngIf="f.addressLine.touched && f.addressLine.invalid">
+                        <span [ngClass]="'errors'" *ngIf="f.addressLine.errors">Please Enter Address Details.</span>
+                    </div>
+                </div>
+            </div>
+            <div class="form-row mb-4">
+                <div class="col-lg-4"></div>
+                <div class="col-lg-4 mb-2">
+                    <input type="text" formControlName="pinCode" id="pinCode" placeholder="PIN Code"
+                        class="form-control">
+                    <div *ngIf="f.pinCode.touched && f.pinCode.invalid">
+                        <span [ngClass]="'errors'" *ngIf="f.pinCode.errors">Please Enter PIN/ ZIP Code.</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="border border-primary p-2 mb-2" action="qualification-details">
+            <h3 class="border border-primary text-center mb-4">Qualification Details</h3>
+            <div class="form-row">
+                <div class="col-lg-4"></div>
+                <div class="col-lg-8 mb-2">
+                    <ul>
+                        <li class="impNoteColor alert alert-warning" role="alert">Minimum qualification of certification
+                            course is 10th and duration is 3 Month/सर्टिफिकेट कोर्स की न्यूनतम योग्यता 10 वीं और अवधि 3
+                            माह है|</li>
+                        <li class="impNoteColor alert alert-warning" role="alert">Minimum qualification of diploma
+                            course is 12th and duration is 6 Month/डिप्लोमा कोर्स की न्यूनतम योग्यता 12 वीं और अवधि 6
+                            महीने है।</li>
+                    </ul>
+                </div>
+
+            </div>
+            <div class="form-row mb-4">
+                <div class="col-lg-4">
+                    <label>Qualification Details/शैक्षणिक विवरण : </label><label id="lbl">*</label>
+                </div>
+                <div class="col-lg-8 mb-2">
+                    <select name="selectQualification" formControlName="selectQualification"
+                        class="browser-default custom-select">
+                        <option [ngValue]="null" selected>Please Select Your Qualification </option>
+                        <option *ngFor="let qualification of qualifications" [ngValue]="qualification.id">
+                            {{qualification.name}}</option>
+                    </select>
+                    <div *ngIf="f.selectQualification.touched && f.selectQualification.invalid">
+                        <span [ngClass]="'errors'" *ngIf="f.selectQualification.errors">Please, select
+                            Qualification.</span>
+                    </div>
+                </div>
+            </div>
+            <div class="form-row mb-4">
+                <div class="col-lg-4">
+                    <label> Upload 10th Marksheet/10वीं की मार्कशीट अपलोड करें:</label><label id="lbl">*</label>
+                </div>
+                <div class="col-lg-8 mb-2">
+                    <input type="file" formControlName="marksheetFile10" (change)="getmarksheet10File($event)"
+                        class="form-control ">
+                    <div *ngIf="f.marksheetFile10.touched && f.marksheetFile10.invalid">
+                        <span [ngClass]="'errors'" *ngIf="f.marksheetFile10.errors">File is not empty.</span>
+                    </div>
+                </div>
+            </div>
+            <div class="form-row mb-4">
+                <div class="col-lg-4">
+                    <label> Upload 12th Marksheet/12वीं की मार्कशीट अपलोड करें:</label><label id="lbl">*</label>
+                </div>
+                <div class="col-lg-8 mb-2">
+                    <input type="file" formControlName="marksheetFile12" (change)="getaMarksheet12File($event)"
+                        class="form-control ">
+                    <div *ngIf="f.marksheetFile12.touched && f.marksheetFile12.invalid">
+                        <span [ngClass]="'errors'" *ngIf="f.marksheetFile12.errors">File is not empty.</span>
+                    </div>
+                </div>
+            </div>
+            <div class="form-row mb-4">
+                <div class="col-lg-4"></div>
+                <div class="col-lg-4 mb-2">
+                    <input type="text" formControlName="boardName" placeholder="Enter Board Name" class="form-control">
+                    <div *ngIf="f.boardName.touched && f.boardName.invalid">
+                        <span [ngClass]="'errors'" *ngIf="f.boardName.errors">Please, Enter School Board Name.</span>
+                    </div>
+
+                </div>
+                <div class="col-lg-4 mb-2">
+                    <input type="text" formControlName="boardPassingYear" id="boardPassingYear"
+                        placeholder="Enter Passing Year" class="form-control">
+                    <div *ngIf="f.boardPassingYear.touched && f.boardPassingYear.invalid">
+                        <span [ngClass]="'errors'" *ngIf="f.boardPassingYear.errors">Please, Enter School Passing
+                            Year.</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="form-row mb-4">
+                <div class="col-lg-4"></div>
+                <div class="col-lg-3 mb-2">
+                    <input type="text" formControlName="marks" placeholder="Enter Marks %" class="form-control">
+                    <div *ngIf="f.marks.touched && f.marks.invalid && f.cgpa.invalid">
+                        <span [ngClass]="'errors'" *ngIf="f.marks.errors">Please, Enter marks in presentage (%).</span>
+                    </div>
+                </div>
+                <p>Or</p>
+                <div class="col-lg-3 mb-2">
+
+                    <input type="text" formControlName="cgpa" id="cgpa" placeholder="Enter CGPA " class="form-control">
+                    <div *ngIf="f.cgpa.touched && f.cgpa.invalid && f.marks.invalid">
+                        <span [ngClass]="'errors'" *ngIf="f.cgpa.errors">Please, Enter CGPA Grade.</span>
+                    </div>
+                </div>
+
+            </div>
+
+            <div class="form-row mb-4">
+                <div class="col-lg-4"></div>
+                <div class="col-lg-2">
+                    <button class="btn btn-primary" id="addQualification" type="button"
+                        (click)="addQualification()">Add</button>
+                </div>
+            </div>
+            <ng-template>
+                <div class="form-row mb-4">
+                    <div class="col-lg-4"></div>
+                    <div class="col-lg-8">
+                        <table class="table">
+                            <tr>
+                                <td>Qualification</td>
+                                <td>Board</td>
+                                <td>Passed Year</td>
+                                <td>Marks/cgpa</td>
+                                <td>File Name</td>
+                                <td></td>
+                            </tr>
+
+                            <tr *ngFor="let q of objectKeys(list)">
+                                <td>{{qualificationList['qualification']}}</td>
+                                <td>{{qualificationList['boardName']}}</td>
+                                <td>{{qualificationList['passedYear']}}</td>
+                                <td>{{qualificationList['marks']}}/{{qualificationList['cgpa']}}</td>
+                                <td>File Name</td>
+                                <td>
+                                    <button class="btn btn-warn" type="reset">Delete</button>
+                                </td>
+                            </tr>
+                        </table>
+                    </div>
+                </div>
+            </ng-template>
+        </div>
+        <div class="border border-primary p-2 mb-2" action="other-details">
+            <h3 class="border border-primary text-center mb-4">Other Details(Optional)</h3>
+
+            <div class="form-row mb-4">
+                <div class="col-lg-4">WhatsApp Number/WhatsApp नंबर : </div>
+                <div class="col-lg-8 mb-2">
+                    <input type="text" formControlName="waNumber" placeholder="Enter WhatsApp Number"
+                        class="form-control ">
+                    <div *ngIf="f.waNumber.touched && f.waNumber.invalid">
+                        <span [ngClass]="'errors'" *ngIf="f.waNumber.errors">Please Enter Whatsapp Number.</span>
+                    </div>
+                </div>
+            </div>
+            <div class="form-row mb-4">
+                <div class="col-lg-4">Twitter Id/Twitter आईडी: </div>
+                <div class="col-lg-8 mb-2">
+                    <input type="text" formControlName="twitterId" placeholder="Enter Twitter Id" class="form-control ">
+                    <div *ngIf="f.twitterId.touched && f.twitterId.invalid">
+                        <span [ngClass]="'errors'" *ngIf="f.twitterId.errors">Please, Enter Twitter Link.</span>
+                    </div>
+                </div>
+            </div>
+            <div class="form-row mb-4">
+                <div class="col-lg-4">Facebook Id/फेसबुक आईडी :</div>
+                <div class="col-lg-8 mb-2">
+                    <input type="text" formControlName="fbId" id="fbId" placeholder="Enter Facebook Id"
+                        class="form-control">
+                    <div *ngIf="f.fbId.touched && f.fbId.invalid">
+                        <span [ngClass]="'errors'" *ngIf="f.fbId.errors">Please, Enter Facebook Link.</span>
+                    </div>
+                </div>
+
+            </div>
+
+            <div class="form-row mb-4">
+                <div class="col-lg-4">Instagram Id/इंस्टाग्राम आईडी : </div>
+                <div class="col-lg-8 mb-2">
+                    <input type="text" formControlName="instaId" id="marks" placeholder="Enter Instagram Id"
+                        class="form-control">
+                    <div *ngIf="f.instaId.touched && f.instaId.invalid">
+                        <span [ngClass]="'errors'" *ngIf="f.instaId.errors">Please, Enter Instagram Link.</span>
+                    </div>
+                </div>
+
+            </div>
+
+        </div>
+
+        <div class="form-row mb-4">
+            <div class="col-lg-4">
+                <!-- <label>Enter Captcha:</label> -->
+            </div>
+            <div class="col-lg-8 mb-2">
+
+                <!-- <input class="btn btn-primary" type="button" value="Captcha"> -->
+
+                <div class=" row p-2 mb-2">
+
+                    <div class=" col-md-4 mb-2">
+                        <input type="text" class="form-control" readonly id="capt" placeholder="{{this.capImage}}">
+                    </div>
+                    <div class="col-md-4 mb-2">
+                        <input type="text" formControlName="captchaText" placeholder="Enter Captcha Here"
+                            class="form-control ">
+                    </div>
+                    <div class="col-md-4 mb-2">
+                        <i (click)="generateCaptcha()" class="fas fa-sync-alt"></i>
+                    </div>
+                </div>
+            </div>
+
+
+
+        </div>
+
+        <div class="p-2 mb-2" action="submit">
+            <div class="form-row mb-6">
+                <div class="col-lg-4"></div>
+                <div class="col-lg-4 center">
+                    <!-- [disabled]="!admissionForm.valid" -->
+                    <button class="btn btn-primary" id="saveandpreview" type="submit" (click)="preview()"> Save and
+                        Preview</button>
+                </div>
+
+            </div>
+
+        </div>
+
+    </form>
+    <ng-template [ngIf]="previewDisplay">
+        <app-preview-admission-form></app-preview-admission-form>
+    </ng-template>
+
+</div>

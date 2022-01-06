@@ -1,0 +1,291 @@
+<br>
+<div class="container">
+  <div *ngIf="loading" id="loading" ></div>
+ <form>
+  <div class="border border-primary p-2 mb-2">
+      <h3 class="border border-primary mb-4 text-center">Basic Details</h3>
+        <div class="form-row mb-4"> 
+          <div class="col-lg-4">
+            <label>Candidate Photo/आवेदक का फोटो  :</label>             
+        </div>
+        <div class="col-lg-4">
+          <img height="100" width="100">            
+        </div>
+        
+        </div>
+        <div class="form-row mb-4" >       
+          <div class="col-lg-4">
+              <label>Course Name/कोर्स का नाम :</label>             
+          </div> 
+          <div class="col-lg-8" >
+            <select class="browser-default custom-select"  name="selectCourse" *ngFor="let a of studentdata; first as isFirst" >
+              <option selected >{{a.course_name}}</option>
+            </select>  
+          </div>
+        </div>  
+        <div class="form-row mb-4" *ngFor="let a of studentdata">       
+          <div class="col-lg-4">
+              <label>Applicant Name/आवेदक का नाम :</label>             
+          </div> 
+          <div class="col-lg-4">
+            <input type="text" class="form-control" name="first_name" [(ngModel)]="a.first_name"  placeholder="First Name" [ngModelOptions]="{standalone: true}"> 
+          </div>
+          <div class="col-lg-4">
+            <input type="text" class="form-control"   name="last_name" [(ngModel)]="a.last_name"  placeholder="Last Name" [ngModelOptions]="{standalone: true}" >  
+          </div>
+        </div> 
+        <div class="form-row mb-4" *ngFor="let a of studentdata">
+          <div class="col-lg-4">
+            <label>Father's Name/पिता का नाम :</label>             
+         </div> 
+         <div class="col-lg-8">
+          <input type="text" class="form-control" name="father_name" [(ngModel)]="a.father_name"  placeholder="Father Name" [ngModelOptions]="{standalone: true}" >  
+        </div> 
+        </div>
+        <div class="form-row mb-4" *ngFor="let a of studentdata">
+          <div class="col-lg-4">
+            <label>Mother's Name/माता का नाम :</label>             
+         </div> 
+         <div class="col-lg-8">
+          <input type="text" class="form-control"  name="mother_name" [(ngModel)]="a.mother_name"  placeholder="Mother Name" [ngModelOptions]="{standalone: true}" >  
+        </div> 
+        </div>
+        <div class="form-row mb-4" *ngFor="let a of studentdata">
+          <div class="col-lg-4">
+            <label>Date of Birth/जन्म तिथिम :</label>             
+         </div> 
+         <div class="col-lg-2">
+          <select class="browser-default custom-select"  name="selectCourse"  >
+            <option selected  >{{a.dob | date:'d'}}</option>
+          </select> 
+        </div> 
+        <div class="col-lg-2">
+          <select class="browser-default custom-select"  name="selectCourse"  >
+            <option selected >{{a.dob | date:'MMMM'}}</option>
+          </select> 
+        </div>
+        <div class="col-lg-2">
+          <select class="browser-default custom-select"  name="selectCourse"  >
+            <option selected >{{a.dob | date:'y'}}</option>
+          </select>   
+        </div>
+        </div>
+        <div class="form-row mb-4" *ngFor="let a of studentdata">
+          <div class="col-lg-4">
+            <label>Gender/लिंग :</label>             
+         </div>
+         <div class="col-lg-8">
+          <select class="browser-default custom-select"  name="gender"  >
+            <option selected >{{a.gender}}</option>
+          </select>              
+         </div>
+        </div>
+        <div class="form-row mb-4" *ngFor="let a of studentdata">
+          <div class="col-lg-4">
+            <label>Category/वर्ग :</label>
+          </div>
+          <div class="col-lg-4">
+            <select class="browser-default custom-select"  name="category"  >
+              <option selected >{{a.category}}</option>
+            </select>              
+           </div>
+           <div class="col-lg-4">
+            <a href="/images/myw3schoolsimage.jpg" download="w3logo">
+              Click Here
+             </a>
+          </div>         
+        </div>
+       
+        <div class="form-row mb-4" *ngFor="let a of studentdata">
+          <div class="col-lg-4">  
+            <label>Mobile Number/मोबाइल नंबर :</label>     
+          </div>
+          <div class="col-lg-8">
+            <input type="text" class="form-control" name="mobile_no" [(ngModel)]="a.mobile_no"  placeholder="Mobile Number" [ngModelOptions]="{standalone: true}"> 
+          </div>
+        </div>
+        <div class="form-row mb-4" *ngFor="let a of studentdata">
+          <div class="col-lg-4">  
+            <label>Email Id/ईमेल आईडी :</label>     
+          </div>
+          <div class="col-lg-8">
+            <input type="text" class="form-control"  name="email" [(ngModel)]="a.email"  placeholder="Email Id" [ngModelOptions]="{standalone: true}" > 
+          </div>
+        </div>
+        <div class="form-row mb-4" *ngFor="let a of studentdata">
+          <div class="col-lg-4">  
+            <label>Aadhar Number/आधार संख्या :</label>     
+          </div>
+          <div class="col-lg-4" *ngFor="let a of studentdata">
+            <input type="text" class="form-control"  name="aadhar_no" [(ngModel)]="a.aadhar_no"  placeholder="Aadhar Number" [ngModelOptions]="{standalone: true}" > 
+          </div>
+          <div class="col-lg-4">
+            <a href="/images/myw3schoolsimage.jpg" download="w3logo">
+              Click Here
+             </a>
+          </div>  
+        </div>
+       
+      </div>  
+      <div class="border border-primary p-2 mb-2" action="address-details">
+        <h3 class="border border-primary text-center mb-4">Address Details</h3>
+        <div class="form-row mb-4" *ngFor="let a of studentdata">
+          <div class="col-lg-4">
+              <label>Correspondence Address/वर्तमान पता :</label>  
+          </div>
+          <div class="col-lg-4">
+            <select name="selectCountry"  class="browser-default custom-select" >
+              <option selected>{{a.correspondence_country}} </option>
+          </select>  
+        </div>
+        <div class="col-lg-4">
+          <select name="selectState"  class="browser-default custom-select" >
+            <option selected>{{a.correspondence_state}} </option>
+        </select>  
+         </div>        
+        </div>
+        <div class="form-row mb-4" *ngFor="let a of studentdata">
+          <div class="col-lg-4">               
+          </div>
+          <div class="col-lg-4">
+            <select name="selectCity"  class="browser-default custom-select" >
+              <option selected>{{a.correspondence_city}} </option>
+          </select>  
+        </div>     
+       </div>
+       <div class="form-row mb-4" *ngFor="let a of studentdata">
+        <div class="col-lg-4">               
+        </div>
+        <div class="col-lg-8">
+          <textarea id="addressLine"  placeholder="House number , city ....." class="form-control"
+          name="correspondence_address" [(ngModel)]="a.correspondence_address"   [ngModelOptions]="{standalone: true}" ></textarea>  
+      </div>     
+     </div>
+     <div class="form-row mb-4" *ngFor="let a of studentdata">
+      <div class="col-lg-4">               
+      </div>
+      <div class="col-lg-4">
+        <input type="text"  id="pinCode" placeholder="492001" class="form-control" 
+        name="correspondence_pin" [(ngModel)]="a.correspondence_pin"   [ngModelOptions]="{standalone: true}">
+    </div>     
+   </div>
+      </div>
+      <div class="border border-primary p-2 mb-2" action="address-details">
+        <h3 class="border border-primary text-center mb-4">Qualification Details</h3>
+        <div class="form-row mb-4">
+          <div class="col-lg-12">
+            <label>Qualification Details/शैक्षणिक विवरण :</label>
+          </div>
+        </div> 
+        <div class="form-row mb-4">
+          <div class="col-lg-12 table-wrapper-scroll-y my-custom-scrollbar" >
+            <table class="table table-bordered">
+              <thead>
+                <tr>
+                  <th scope="col">Qualification Details</th>
+                  <th scope="col"> Board Name</th>
+                  <th scope="col">Passing Year</th>
+                  <th scope="col">% or CGPA</th>
+                  <th scope="col">Download</th>
+                  
+                </tr>
+              </thead>
+              <tbody >
+                <tr *ngFor="let b of studentqual">
+                  <th scope="row">{{b.qualification_name}}</th>
+                  <td>{{b.board_name}}</td>
+                  <td>{{b.passing_year}} </td>
+                  <td>{{b.marks}}</td>
+                  <td><a href="/images/myw3schoolsimage.jpg" download="w3logo">
+                    Click Here
+                   </a></td>
+                   
+                </tr>
+              </tbody>
+              </table>
+          </div>
+        </div> 
+      </div>
+      <div class="border border-primary p-2 mb-2" action="address-details" *ngFor="let a of studentdata">
+        <h3 class="border border-primary text-center mb-4">Other Details(Optional)</h3>
+        <!-- {{a.approve_reject_status}} -->
+        <div class="form-row mb-4">
+          <div class="col-lg-4">
+            <label>WhatsApp Number/WhatsApp नंबर :</label>
+          </div>
+          <div class="col-lg-8">
+            <input type="text"  placeholder="WhatsApp Number" class="form-control "
+            name="whatsapp_no" [(ngModel)]="a.whatsapp_no"   [ngModelOptions]="{standalone: true}">
+          </div>
+        </div>
+        <div class="form-row mb-4">
+          <div class="col-lg-4">
+            <label>Twitter Id/Twitter आईडी:</label>
+          </div>
+          <div class="col-lg-8">
+            <input type="text"  placeholder="Twitter Id" class="form-control "
+            name="twitter_id" [(ngModel)]="a.twitter_id"   [ngModelOptions]="{standalone: true}">
+          </div>
+        </div>
+        <div class="form-row mb-4">
+          <div class="col-lg-4">
+            <label>Facebook Id/फेसबुक आईडी :</label>
+          </div>
+          <div class="col-lg-8">
+            <input type="text"  placeholder="Facebook Id" class="form-control "
+            name="facebook_id" [(ngModel)]="a.facebook_id"   [ngModelOptions]="{standalone: true}">
+          </div>
+        </div>
+        <div class="form-row mb-4">
+          <div class="col-lg-4">
+            <label>Instagram Id/इंस्टाग्राम आईडी</label>
+          </div>
+          <div class="col-lg-8">
+            <input type="text"  placeholder="Instagram Id" class="form-control "
+            name="instagram_id" [(ngModel)]="a.instagram_id"   [ngModelOptions]="{standalone: true}">
+          </div>
+        </div>
+      </div>
+<div *ngFor="let a of studentdata">
+  
+     <div *ngIf="a.approve_reject_status == 'A' || a.approve_reject_status == 'X'; else approved">
+<tr ><th colspan="5" class=" alert alert-danger text-center">Candidate Approved Or Rejected!!</th></tr>
+     </div>
+
+    </div>
+     <ng-template #approved >
+     
+      <form  [formGroup]="approverejectForm" >
+  <div *ngFor="let a of studentdata" style="display: none;"><input type="text"  formControlName="course_code"
+    name="course_code" [(ngModel)]="a.course_code"    ></div>
+      <div class="form-row mb-4">
+        <div class="col-lg-2 "> </div>
+        <div class="col-lg-2 mb-2">        
+            <label>Remarks</label><label id="lbl">*</label>
+        </div>
+        <div class="col-lg-8"> 
+          <textarea  class="form-control" formControlName="remarks" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.remarks.errors }"></textarea>   
+          <div *ngIf="submitted && f.remarks.errors" class="invalid-feedback">
+            <div *ngIf="f.remarks.errors.required">remarks is required</div>
+        </div>
+        </div>
+        <div class="col-lg-2"></div>
+      
+      </div>
+      <div class="p-2 mb-2" action="submit">   
+        <div class="form-row mb-6">
+            <div class="col-lg-4"></div>
+            <div class="col-lg-4 center"> 
+              <button class="btn btn-success" (click)="onApprove()" >Approve</button> &nbsp;
+              <button class="btn btn-danger" (click)="onReject()" >Reject</button>&nbsp;
+              <button class="btn btn-primary" (click)="onAlertMsg()">Send Notification </button> 
+            </div>
+         </div>
+      </div>
+    </form>
+  </ng-template>
+  
+  </form>
+     
+</div>   
+ 

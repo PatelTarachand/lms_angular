@@ -1,0 +1,204 @@
+<div class="container">
+    <form class="form-horizontal">
+        <div class="border border-primary p-2 mb-2">
+            <h3 class="border border-primary mb-4 text-center">Basic Details</h3>
+            <div class="form-row">
+                <div class="col-lg-4">
+                    <label>Course Name :</label>
+                </div>
+                <div class="col-lg-10  mb-8">
+                    <label>{{this.selectCourse }}</label>
+                </div>
+
+            </div>
+
+
+            <div class="form-row mb-4">
+                <div class="col-lg-4">
+                    <label>Applicant Name : </label><label id="lbl">*</label>
+                </div>
+                <div class="col-lg-4  mb-2">
+                    <label></label><label id="lbl">{{this.firstName}} {{this.lastName}}</label>
+
+                </div>
+
+            </div>
+            <div class="form-row mb-4">
+                <div class="col-lg-4">
+                    <label> Father's Name :</label><label id="lbl">*</label>
+                </div>
+                <div class="col-lg-8 mb-2">
+                    <label for="fatherName">{{this.fatherName}}</label>
+
+                </div>
+
+            </div>
+            <div class="form-row mb-4">
+                <div class="col-lg-4">
+                    <label> Mother's Name : </label><label id="lbl">*</label>
+                </div>
+                <div class="col-lg-8 mb-2">
+                    <label for="motherName">{{this.motherName}}</label>
+                </div>
+
+            </div>
+            <div class="form-row mb-4">
+                <div class="col-lg-4">
+                    <label> Date of Birth :</label><label id="lbl">*</label>
+                </div>
+                <div class="col-lg-2 mb-2">
+                    <label for="dob">{{this.selectDay}} {{this.selectMonth}} {{this.selectYear}}</label>
+                </div>
+
+            </div>
+            <div class="form-row mb-4">
+                <div class="col-lg-4">
+                    <label> Gender : </label><label id="lbl">*</label>
+                </div>
+                <div class="col-lg-6 mb-2">
+                    <label for="gender">{{this.selectGender}}</label>
+                </div>
+            </div>
+            <div class="form-row mb-4">
+                <div class="col-lg-4">
+                    <label>Category :</label><label id="lbl">*</label>
+                </div>
+                <div class="col-lg-6 mb-2">
+                    <label for="category">{{this.selectCategory}}</label>
+                </div>
+
+            </div>
+
+            <div class="form-row mb-4">
+                <div class="col-lg-4"></div>
+                <div class="col-lg-2 mb-2">
+                    <label> Upload Cast certificate:</label><label id="lbl">*</label>
+                </div>
+                <div class="col-lg-6 mb-2">
+                    <input type="file" class="form-control ">
+
+                </div>
+            </div>
+
+
+            <div class="form-row mb-4">
+                <div class="col-lg-4">
+                    <label>Mobile Number :</label><label id="lbl">*</label>
+                </div>
+                <div class="col-lg-8 mb-2">
+                    <label for="mobileNumber">{{this.mobileNumber}}</label>
+                </div>
+
+            </div>
+            <div class="form-row mb-4">
+                <div class="col-lg-4">
+                    <label>Email Id :</label><label id="lbl">*</label>
+                </div>
+                <div class="col-lg-8 mb-2">
+                    <label for="emailId">{{this.emailId}}</label>
+                </div>
+
+            </div>
+            <div class="form-row mb-4">
+                <div class="col-lg-4">
+                    <label>Aadhar Number :</label><label id="lbl">*</label>
+                </div>
+                <div class="col-lg-8 mb-2">
+                    <label for="aadharNumber">{{this.aadharNumber}}</label>
+                </div>
+
+            </div>
+            <div class="form-row mb-4">
+                <div class="col-lg-4"></div>
+                <div class="col-lg-2 mb-2">
+                    <label> Upload Aadhar Card:</label><label id="lbl">*</label>
+                </div>
+                <div class="col-lg-6 mb-2">
+                    <input type="file" class="form-control ">
+
+                </div>
+            </div>
+            <div class="form-row mb-4">
+                <div class="col-lg-4">
+                    <label> Upload Applicant Photo :</label><label id="lbl">*</label>
+                </div>
+                <div class="col-lg-8 form-group mb-2">
+                    <input type="file" class="form-control ">
+
+                </div>
+            </div>
+        </div>
+
+        <div class="border border-primary p-2 mb-2" action="address-details">
+            <h3 class="border border-primary text-center mb-4">Address Details</h3>
+            <div class="form-row mb-4">
+                <div class="col-lg-4">
+                    <label>Correspondence Address :</label><label id="lbl">*</label>
+                </div>
+                <div class="col-lg-4 mb-2">
+                    <label
+                        for="address">{{this.addressLocal}}{{this.selectDistrict}}{{this.selectState}}{{this.selectCountry}}{{this.pinCode}}</label>
+                </div>
+
+            </div>
+
+        </div>
+        <div class="border border-primary p-2 mb-2" action="qualification-details">
+            <h3 class="border border-primary text-center mb-4">Qualification Details</h3>
+            <div class="form-row mb-4">
+                <div class="col-lg-4">
+                    <label>Qualification Details : </label><label id="lbl">*</label>
+                </div>
+                <div class="col-lg-4 mb-2">
+                    <label for="qualification">{{this.boardName}}{{this.passedYear}}{{this.marks}}{{this.cgpa}}</label>
+
+                </div>
+            </div>
+
+
+        </div>
+        <div class="border border-primary p-2 mb-2" action="other-details">
+            <h3 class="border border-primary text-center mb-4">Other Details(Optional)</h3>
+
+            <div class="form-row mb-4">
+                <div class="col-lg-4">WhatsApp Number : </div>
+                <div class="col-lg-4 mb-2">
+                    <label for="waNumber">{{this.waNumber}}</label>
+                </div>
+            </div>
+            <div class="form-row mb-4">
+                <div class="col-lg-4">Twitter Id : </div>
+                <div class="col-lg-4 mb-2">
+                    <label for="twitterId">{{this.twitterId}}</label>
+                </div>
+            </div>
+            <div class="form-row mb-4">
+                <div class="col-lg-4">Facebook Id :</div>
+                <div class="col-lg-4 mb-2">
+                    <label for="fbId">{{this.fbId}}</label>
+                </div>
+
+            </div>
+
+            <div class="form-row mb-4">
+                <div class="col-lg-4">Instagram Id : </div>
+                <div class="col-lg-4 mb-2">
+                    <label for="instaId">{{this.instaId}}</label>
+                </div>
+
+            </div>
+
+        </div>
+
+        <div class="p-2 mb-2" action="submit">
+            <div class="form-row mb-6">
+                <div class="col-lg-4"></div>
+                <div class="col-lg-4 center">
+                    <button class="btn btn-primary" type="submit">Submit</button>
+                </div>
+
+            </div>
+
+        </div>
+    </form>
+</div>

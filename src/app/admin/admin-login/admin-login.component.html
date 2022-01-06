@@ -1,0 +1,70 @@
+<br><br>
+<h5 id="h5">Admin Login</h5>
+<div class="container">
+  <div class="form-row">
+    <div class="col-lg-2"></div>
+    <div class="col-lg-8">
+      <!-- (ngSubmit) ="loginCandidate()" -->
+      <form  class="border border-primary p-2 mb-2">
+        <br>
+        <!--
+        <p class="impNoteColor">Note: - Email id is your username and password is your date of birth
+        </p> -->
+        <div class="form-group form-row">
+          <div class="col-lg-2"></div>
+          <div class="col-lg-2">
+            <label>Email Id</label><label id="lbl">*</label>
+          </div>
+          <div class="col-lg-6">
+            <input type="email" class="form-control" id="email" aria-describedby="email" aria-placeholder="Enter Email Id"
+            name="email" [(ngModel)]="login.email">
+          </div>
+          <div class="col-lg-2"></div>
+        </div>
+        <br>
+        <div class="form-group form-row">
+          <div class="col-lg-2"></div>
+          <div class="col-lg-2">
+            <label>Password</label><label id="lbl">* </label>
+          </div>
+          <div class="col-lg-6">
+            <input type="password" class="form-control"  id="password" aria-describedby="password" aria-placeholder="Enter Password "
+            name="password" [(ngModel)]="login.password">
+          </div>
+          <div class="col-lg-2"></div>
+        </div>
+        <br>
+
+
+        <div class=" form-row p-2 mb-2">
+          <div class="col-lg-2 col-md-2 col-sm-2"></div>
+          <div class="col-lg-4 col-md-4 col-sm-4 mb-2">
+            <input type="text" class="form-control" readonly id="capt" placeholder="{{this.capImage}}">
+          </div>
+          <div class="col-lg-4 col-md-4 col-sm-4 mb-2">
+            <input type="text" [(ngModel)]="this.captchaText" [ngModelOptions]="{standalone: true}" placeholder="Enter Captcha Here" class="form-control ">
+          </div>
+          <div class="col-lg-2 col-md-2 col-sm-2 mb-2">
+            <i (click)="generateCaptcha()" class="fas fa-sync-alt"></i>
+          </div>
+        </div>
+
+        <div class="form-row">
+          <div class="col-lg-5"></div>
+          <div class="col-lg-4">
+            <!-- <button  type="submit" id="login"
+              class="btn btn-primary">Login</button>  -->
+              <!-- for login (click)="loginAdmin()"  -->
+              <!--  routerLink="/adminhome" routerLinkActive="active" -->
+              <button (click)="loginAdmin()"  type="submit" id="login"
+              class="btn btn-primary">Login</button>
+            &nbsp;
+            <button type="reset" id="reset" class="btn btn-danger">Reset</button>
+          </div>
+
+        </div><br>
+      </form>
+    </div>
+    <div class="col-lg-2"></div>
+  </div>
+</div>

@@ -1,0 +1,99 @@
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.0/css/all.css" integrity="sha384-lZN37f5QGtY3VHgisS14W3ExzMWZxybE1SJSEsQp9S+oqd12jhcu+A56Ebc1zFSJ" crossorigin="anonymous">
+
+
+<mat-toolbar color="primary" class="example-toolbar fixed-top">
+	<button mat-icon-button (click)="isExpanded = !isExpanded"><mat-icon>menu</mat-icon></button>
+	<h1 class="example-app-name col-sm-1">E-LMS </h1>
+  <p style="color: white; font-size: 12px;  margin-top: 22px;">Enrollment No. : Pending</p>
+  <p class="col-sm-7"></p>
+  <p class="col-sm-1 float-right" style="
+    padding: 10px;
+    margin-top: 30px;">
+      <mat-icon matBadge="15" matBadgeColor="warn">doorbell</mat-icon>
+    </p>
+    <div class="dropdown form-inline float-right" style="float: right;" >
+      <a  class="btn btn-primarynav dropdown-toggle my-2 my-sm-0"  type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+      Welcome:  Lalit
+      </a>
+      <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+        <a class="dropdown-item" routerLink="/profile" routerLinkActive="active" >Profile Settings</a>
+        <a class="dropdown-item" href="#">Settings</a>
+        <a class="dropdown-item" routerLink="/candidatelogin" >Logout</a>
+      </div>
+    </div>
+</mat-toolbar>
+
+<mat-sidenav-container class="example-container" autosize>
+	<mat-sidenav #sidenav class="example-sidenav" mode="side" opened="true" (mouseenter)="mouseenter()" (mouseleave)="mouseleave()">
+    <div style="height: 50px;"></div>
+    <div class="text-center">
+      <!--<img height="100" width="100">-->
+    </div>
+    <hr>
+    <mat-nav-list>
+      <mat-list-item>
+        <span class="full-width" *ngIf="isExpanded || isShowing"><a routerLink="/candidatehome" routerLinkActive="active" href="#">Home</a></span>
+				 <mat-icon mat-list-icon>home</mat-icon> 
+				<!-- <mat-icon class="menu-button" [ngClass]="{'rotated' : showSubmenu}" *ngIf="isExpanded || isShowing">expand_more</mat-icon> -->
+        
+      </mat-list-item>
+    </mat-nav-list>
+    <mat-nav-list>
+			<mat-list-item (click)="showSubmenu = !showSubmenu" class="parent">
+				<span class="full-width" *ngIf="isExpanded || isShowing"><a>Student Profile</a></span>
+				<!-- <mat-icon mat-list-icon>home</mat-icon> -->
+        <mat-icon mat-list-icon>account_box</mat-icon>
+				<mat-icon class="menu-button" [ngClass]="{'rotated' : showSubmenu}" *ngIf="isExpanded || isShowing">expand_more</mat-icon>
+			</mat-list-item>
+			<div class="submenu" [ngClass]="{'expanded' : showSubmenu}" *ngIf="isShowing || isExpanded">
+				<a mat-list-item routerLink="profile" routerLinkActive="active">Student Profile</a>
+				<!-- <a mat-list-item href="...">Submenu Item 2</a> -->
+				<!-- <mat-list-item (click)="showSubSubMenu = !showSubSubMenu" class="parent">
+					<span class="full-width" *ngIf="isExpanded || isShowing">Nested Menu</span>
+					<mat-icon class="menu-button" [ngClass]="{'rotated' : showSubSubMenu}" *ngIf="isExpanded || isShowing">expand_more</mat-icon>
+				</mat-list-item>
+				<div class="submenu" [ngClass]="{'expanded' : showSubSubMenu}" *ngIf="isShowing || isExpanded">
+					<mat-list-item>SubSubmenu Item 1</mat-list-item>
+					<mat-list-item>SubSubmenu Item 2</mat-list-item>
+				</div> -->
+			</div>
+		</mat-nav-list>
+    <mat-nav-list>
+</mat-nav-list>
+	</mat-sidenav>
+
+	<div class="example-sidenav-content">
+    <div style="height: 60px;"></div>
+    <div style="">
+      <!-- Super Admin Panel -->
+     <!-- <app-super-admin></app-super-admin> -->
+
+     <!-- All Admission List -->
+     <!-- <app-all-admission-list></app-all-admission-list> -->
+
+     <!-- Admission Request List -->
+     <!-- <app-all-admission-request-list></app-all-admission-request-list> -->
+
+     <!-- Per Student Details Check -->
+     <!-- <app-candidate-profile></app-candidate-profile> -->
+
+    <!--  Student Details Check --> 
+<!-- <app-candidate-profile-details></app-candidate-profile-details> -->
+
+<!--  Student Dashboard --> 
+<!-- <app-candidate-dashboard></app-candidate-dashboard> -->
+<router-outlet></router-outlet>
+
+<div style="height: 50px;"></div>
+     
+    </div>
+	</div>
+
+</mat-sidenav-container>
+
+
+
+
+<!-- Copyright 2017 Google Inc. All Rights Reserved.
+    Use of this source code is governed by an MIT-style license that
+    can be found in the LICENSE file at http://angular.io/license -->

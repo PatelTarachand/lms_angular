@@ -1,0 +1,48 @@
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.0/css/all.css" integrity="sha384-lZN37f5QGtY3VHgisS14W3ExzMWZxybE1SJSEsQp9S+oqd12jhcu+A56Ebc1zFSJ" crossorigin="anonymous">
+<div class="container">
+<br><br>
+<br>
+<br>
+
+    <div class="container" >
+        <div class="row">
+          <div *ngIf="loading" id="loading" ></div> 
+       <div class="col-md-3" *ngFor="let b of objectKeys(totalstudcount) ">
+              <div class="card-counter primary">
+                <i class="fa fa-users"></i>
+             <span class="count-numbers">{{ totalstudcount.totalstudent_count }}</span>           
+                <span class="count-name"><a routerLink="status-wise/R" routerLinkActive="active"  style="color: white;" href="#">All Addmission Request</a></span>
+              </div>
+            </div>
+
+          <div class="col-md-3" *ngFor="let b of objectKeys(totalpendingstudcount) ">
+          <div class="card-counter info">
+            <i class="fa fa-users"></i>
+            <span class="count-numbers">{{ totalpendingstudcount.pending_count }}</span>
+            <span class="count-name"><a routerLink="status-wise/P" routerLinkActive="active"  style="color: white;" href="#">Modify Candidate</a></span>
+          </div>
+        </div>
+    
+    
+        <div class="col-md-3" *ngFor="let a of objectKeys(totalapprvstudcount) ">
+          <div class="card-counter success">
+            <i class="fa fa-users"></i>
+            <span class="count-numbers">{{ totalapprvstudcount.approved_count }}</span>
+            <span class="count-name"><a routerLink="status-wise/A" routerLinkActive="active" style="color: white;" href="#">Approved Candidate</a></span>
+          </div>
+        </div>
+        <div class="col-md-3" *ngFor="let a of objectKeys(totalrejectstudcount) ">
+          <div class="card-counter danger">
+            <i class="fa fa-users"></i>
+            <span class="count-numbers">{{ totalrejectstudcount.reject_count }}</span>
+            <span class="count-name"><a routerLink="status-wise/X" routerLinkActive="active" style="color: #FFF;" href="#">Rejected Candidate</a></span>
+          </div>
+        </div>
+    
+       
+       
+      </div>
+    </div>
+    </div>
+    
+

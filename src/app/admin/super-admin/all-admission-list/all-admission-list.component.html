@@ -1,0 +1,19 @@
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.0/css/all.css" integrity="sha384-lZN37f5QGtY3VHgisS14W3ExzMWZxybE1SJSEsQp9S+oqd12jhcu+A56Ebc1zFSJ" crossorigin="anonymous">
+
+<div style="height: 20px;"></div>
+<div class="container">
+  <div *ngIf="loading" id="loading" ></div> 
+         <div class="row">
+          <div class="col-sm-4" *ngFor="let studcntcrswise of data;  let i=index;">
+            <div class="card text-white bg-card-course mb-4">
+                <div class="card-body">
+                  <!-- <p>{{i+1}}</p>  -->
+                    <h2 class="card-title float-right">{{studcntcrswise.student_count}}</h2>
+                    <p class="card-text"><a routerLink="../candidate-list-course-wise/{{studcntcrswise.course_code}}" routerLinkActive="active"
+                      style="color: white; font-size: 15px;">{{studcntcrswise.course_name}}</a></p>
+                </div>
+            </div>
+        </div>
+      </div> 
+  </div>
+

@@ -1,0 +1,31 @@
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.0/css/all.css" integrity="sha384-lZN37f5QGtY3VHgisS14W3ExzMWZxybE1SJSEsQp9S+oqd12jhcu+A56Ebc1zFSJ" crossorigin="anonymous">
+
+<div style="height: 20px;"></div>
+<div class="container">
+      <div class="row">
+       
+        <div *ngIf="statusdata == 0; else actionshow" >
+          <div class="col-md-10 ">
+            <div class="alert alert-warning text-center">No Data Available!!</div>
+          </div>
+          
+        </div>
+        <ng-template #actionshow>
+          
+          <div *ngIf="loading" id="loading" ></div> 
+          <div class="col-sm-4" *ngFor="let studcntcrswise of statusdata; ">
+            <div class="card text-white bg-card-course mb-4">
+                <div class="card-body" >
+                  <!-- <p>{{i+1}} let i=index;</p> -->
+                    <h2 class="card-title float-right">{{studcntcrswise.student_count}} </h2>
+                    <p class="card-text"><a routerLink="/adminhome/candidate-list-course-wise/{{studcntcrswise.course_code}}/{{status_id}}" routerLinkActive="active"
+                      style="color: white; font-size: 15px;">{{studcntcrswise.course_name}}</a></p>
+                </div>
+            </div>
+        </div>
+         </ng-template>
+        
+
+    </div>
+  </div>
+

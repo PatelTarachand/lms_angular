@@ -1,0 +1,336 @@
+<br>
+<div class="container">
+  <div class="form-row mb-4">
+
+    <div class="col-lg-3">
+      <button type="button" id="edit" class="btn btn-primary" (click)="editEnable()">Edit Candidate Details</button>
+    </div>
+    <div class="col-lg-1">
+      <button type="button" id="cancel" class="btn btn-primary" (click)="editCancel()">Cancel</button>
+    </div>
+
+  </div>
+  <form class="form-group" [formGroup]="myGroup" (ngSubmit)="onSubmit(myGroup)">
+    <div class="border border-primary p-2 mb-2">
+      <h3 class="border border-primary mb-4 text-center">Basic Details</h3>
+      <div class="form-row mb-4">
+        <div class="col-lg-4">
+          <label>Candidate Photo/आवेदक का फोटो :</label>
+        </div>
+        <div class="col-lg-4">
+          <img height="100" width="100">
+        </div>
+        <div class="col-lg-4">
+          <input type="file" class="form-control" formControlName="candidatePhoto" (change)="getPhoto($event)"
+            [hidden]="isDisplay">
+        </div>
+      </div>
+      <div class="form-row mb-4">
+        <div class="col-lg-4">
+          <label>Course Name/कोर्स का नाम :</label>
+        </div>
+        <div class="col-lg-8">
+          <select class="browser-default custom-select" formControlName="course_name" name="course_name">
+            <option selected>----------- please select your Diploma/Certificate Course ----------</option>
+            <option *ngFor="let course of courses" [ngValue]="course.course_name"
+              [selected]="course.selectedCourse==true">
+              ({{course.course_code}}) {{course.course_name}}</option>
+          </select>
+        </div>
+      </div>
+      <div class="form-row mb-4">
+        <div class="col-lg-4">
+          <label>Applicant Name/आवेदक का नाम :</label>
+        </div>
+        <div class="col-lg-4">
+          <input type="text" class="form-control" formControlName="first_name" name="first_name" placeholder="Neelam">
+        </div>
+        <div class="col-lg-4">
+          <input type="text" class="form-control" formControlName="last_name" placeholder="Sahu">
+        </div>
+      </div>
+      <div class="form-row mb-4">
+        <div class="col-lg-4">
+          <label>Father's Name/पिता का नाम :</label>
+        </div>
+        <div class="col-lg-8">
+          <input type="text" class="form-control" formControlName="father_name" placeholder="M P Sahu">
+        </div>
+      </div>
+      <div class="form-row mb-4">
+        <div class="col-lg-4">
+          <label>Mother's Name/माता का नाम :</label>
+        </div>
+        <div class="col-lg-8">
+          <input type="text" class="form-control" formControlName="mother_name" placeholder="Kalyani Sahu">
+        </div>
+      </div>
+      <div class="form-row mb-4">
+        <div class="col-lg-4">
+          <label>Date of Birth/जन्म तिथिम :</label>
+        </div>
+        <div class="col-lg-2">
+          <select class="browser-default custom-select" formControlName="day" name="day">
+            <option *ngFor="let d of days" [ngValue]="d.id" [selected]="d.selectedDay==true">
+              {{d.id}}</option>
+          </select>
+        </div>
+        <div class="col-lg-2">
+          <select class="browser-default custom-select" formControlName="month" name="month">
+            <option selected>June</option>
+            <option *ngFor="let m of months" [ngValue]="m.id" [selected]="m.selectedMonth==true">
+              {{m.month}}</option>
+          </select>
+        </div>
+        <div class="col-lg-2">
+          <select class="browser-default custom-select" formControlName="year" name="year">
+            <option *ngFor="let y of years" [ngValue]="y.id" [selected]="y.selectedYear==true">
+              {{y.year}}</option>
+          </select>
+        </div>
+      </div>
+      <div class="form-row mb-4">
+        <div class="col-lg-4">
+          <label>Gender/लिंग :</label>
+        </div>
+        <div class="col-lg-8">
+          <select class="browser-default custom-select" formControlName="gender" name="gender">
+            <option *ngFor="let g of genders" [ngValue]="g.id" [selected]="g.selectedGender==true">{{g.name}}</option>
+          </select>
+        </div>
+      </div>
+      <div class="form-row mb-4">
+        <div class="col-lg-4">
+          <label>Category/वर्ग :</label>
+        </div>
+        <div class="col-lg-8">
+          <select class="browser-default custom-select" formControlName="category" name="category">
+            <option selected>OBC</option>
+            <option *ngFor="let c of catagories" [ngValue]="c.id" [selected]="c.selectedCategory==true">{{c.name}}
+            </option>
+          </select>
+        </div>
+
+      </div>
+      <div class="form-row mb-4">
+        <div class="col-lg-4">
+        </div>
+        <div class="col-lg-4">
+          <a href="/images/myw3schoolsimage.jpg" download="w3logo">
+            Click Here
+          </a>
+        </div>
+        <div class="col-lg-4">
+          <input type="file" class="form-control " formControlName="categoryFile" (change)="getaCategoryFile($event)"
+            [hidden]="isDisplay">
+        </div>
+      </div>
+      <div class="form-row mb-4">
+        <div class="col-lg-4">
+          <label>Mobile Number/मोबाइल नंबर :</label>
+        </div>
+        <div class="col-lg-8">
+          <input type="text" class="form-control" formControlName="mobile_no" placeholder="9993196096">
+        </div>
+      </div>
+      <div class="form-row mb-4">
+        <div class="col-lg-4">
+          <label>Email Id/ईमेल आईडी :</label>
+        </div>
+        <div class="col-lg-8">
+          <input type="text" class="form-control" formControlName="email" placeholder="abc@gmail.com">
+        </div>
+      </div>
+      <div class="form-row mb-4">
+        <div class="col-lg-4">
+          <label>Aadhar Number/आधार संख्या :</label>
+        </div>
+        <div class="col-lg-8">
+          <input type="text" class="form-control" formControlName="aadhar_no" placeholder="78945612301">
+        </div>
+
+      </div>
+      <div class="form-row mb-4">
+        <div class="col-lg-4"></div>
+        <div class="col-lg-4">
+          <a href="/images/myw3schoolsimage.jpg" download="w3logo">
+            Click Here
+          </a>
+        </div>
+        <div class="col-lg-4">
+          <input type="file" class="form-control" formControlName="aadharFile" (change)="getaAadharFile($event)"
+            [hidden]="isDisplay">
+        </div>
+      </div>
+    </div>
+    <div class="border border-primary p-2 mb-2" action="address-details">
+      <h3 class="border border-primary text-center mb-4">Address Details</h3>
+      <div class="form-row mb-4">
+        <div class="col-lg-4">
+          <label>Correspondence Address/वर्तमान पता :</label>
+        </div>
+        <div class="col-lg-4">
+          <select name="correspondence_country" formControlName="correspondence_country"
+            class="browser-default custom-select">
+
+            <option *ngFor="let country of countries" [ngValue]="country.id" [selected]="country.selectedCountry">
+              {{country.name}}</option>
+          </select>
+        </div>
+        <div class="col-lg-4">
+          <select name="correspondence_state" formControlName="correspondence_state"
+            class="browser-default custom-select">
+
+            <option *ngFor="let state of states" [ngValue]="state.id" [selected]="state.selectedState">{{state.name}}
+            </option>
+          </select>
+        </div>
+      </div>
+      <div class="form-row mb-4">
+        <div class="col-lg-4">
+        </div>
+        <div class="col-lg-4">
+          <select name="correspondence_city" formControlName="correspondence_city"
+            class="browser-default custom-select">
+
+            <option *ngFor="let city of cities" [ngValue]="city.id" [selected]="city.selectedCity">{{city.name}}
+            </option>
+          </select>
+        </div>
+      </div>
+      <div class="form-row mb-4">
+        <div class="col-lg-4">
+        </div>
+        <div class="col-lg-8">
+          <textarea id="addressLine" formControlName="correspondence_address" placeholder="House number , city ....."
+            class="form-control"></textarea>
+        </div>
+      </div>
+      <div class="form-row mb-4">
+        <div class="col-lg-4">
+        </div>
+        <div class="col-lg-4">
+          <input type="text" formControlName="correspondence_pin" id="pinCode" placeholder="492001"
+            class="form-control">
+        </div>
+      </div>
+    </div>
+    <div class="border border-primary p-2 mb-2" action="address-details">
+      <h3 class="border border-primary text-center mb-4">Qualification Details</h3>
+      <div class="form-row mb-4">
+        <div class="col-lg-12">
+          <label>Qualification Details/शैक्षणिक विवरण :</label>
+        </div>
+      </div>
+      <div class="form-row mb-4">
+        <div class="col-lg-12 table-wrapper-scroll-y my-custom-scrollbar">
+          <table class="table table-bordered">
+            <thead>
+              <tr>
+                <th scope="col">Qualification Details</th>
+                <th scope="col"> Board Name</th>
+                <th scope="col">Passing Year</th>
+                <th scope="col">% or CGPA</th>
+                <th scope="col">Download</th>
+                <th scope="col" [hidden]="isDisplay">Upload</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <th scope="row">10th</th>
+                <td>CG Board</td>
+                <td>2006 </td>
+                <td>75</td>
+                <td><a href="/images/myw3schoolsimage.jpg" download="w3logo">
+                    Click Here
+                  </a></td>
+                <td [hidden]="isDisplay"><input type="file" class="form-control" formControlName="marksheetFile10"
+                    (change)="getmarksheet10File($event)" [hidden]="isDisplay"></td>
+              </tr>
+              <tr>
+                <th scope="row">12th</th>
+                <td>CG Board</td>
+                <td>2008 </td>
+                <td>80</td>
+                <td><a href="/images/myw3schoolsimage.jpg" download="w3logo">
+                    Click Here
+                  </a></td>
+                <td [hidden]="isDisplay"><input type="file" class="form-control" formControlName="marksheetFile12"
+                    (change)="getaMarksheet12File($event)" [hidden]="isDisplay"></td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+    <div class="border border-primary p-2 mb-2" action="address-details">
+      <h3 class="border border-primary text-center mb-4">Other Details(Optional)</h3>
+      <div class="form-row mb-4">
+        <div class="col-lg-4">
+          <label>WhatsApp Number/WhatsApp नंबर :</label>
+        </div>
+        <div class="col-lg-8">
+          <input type="text" formControlName="whatsapp_no" placeholder="9993196096" class="form-control ">
+        </div>
+      </div>
+      <div class="form-row mb-4">
+        <div class="col-lg-4">
+          <label>Twitter Id/Twitter आईडी:</label>
+        </div>
+        <div class="col-lg-8">
+          <input type="text" formControlName="twitter_id" placeholder="9993196096" class="form-control ">
+        </div>
+      </div>
+      <div class="form-row mb-4">
+        <div class="col-lg-4">
+          <label>Facebook Id/फेसबुक आईडी :</label>
+        </div>
+        <div class="col-lg-8">
+          <input type="text" formControlName="facebook_id" placeholder="9993196096" class="form-control ">
+        </div>
+      </div>
+      <div class="form-row mb-4">
+        <div class="col-lg-4">
+          <label>Instagram Id/इंस्टाग्राम आईडी</label>
+        </div>
+        <div class="col-lg-8">
+          <input type="text" formControlName="instagram_id" placeholder="9993196096" class="form-control ">
+        </div>
+      </div>
+    </div>
+    <div class="form-row mb-4" [hidden]="isDisplay">
+      <div class="col-lg-4">
+        <!-- <label>Enter Captcha:</label> -->
+      </div>
+      <div class="col-lg-8 mb-2">
+
+        <!-- <input class="btn btn-primary" type="button" value="Captcha"> -->
+
+        <div class=" row p-2 mb-2">
+
+          <div class=" col-md-4 mb-2">
+            <input type="text" class="form-control" readonly id="capt" placeholder="{{this.capImage}}">
+          </div>
+          <div class="col-md-4 mb-2">
+            <input type="text" formControlName="captchaText" placeholder="Enter Captcha Here" class="form-control ">
+          </div>
+          <div class="col-md-4 mb-2">
+            <i (click)="generateCaptcha()" class="fas fa-sync-alt"></i>
+          </div>
+        </div>
+      </div>
+
+
+
+    </div>
+    <div class="p-2 mb-2" action="submit" [hidden]="isDisplay">
+      <div class="form-row mb-6">
+        <div class="col-lg-4"></div>
+        <div class="col-lg-4 center">
+          <button class="btn btn-primary" id="saveandpreview" type="submit"> Save and Preview</button>
+        </div>
+      </div>
+    </div>
+  </form>
+
+</div>

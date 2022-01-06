@@ -1,0 +1,31 @@
+<div class="container center">
+    <div class="row center">
+
+        <form class="form" [formGroup]="captcha" (ngSubmit)="onSubmit(captcha)" method="POST" action="">
+
+
+            <label>Enter Captcha:</label>
+            <div class=" row p-2 mb-2">
+
+                <div class=" col-md-6">
+                    <input type="text" class="form-control" readonly id="capt" placeholder="{{this.capImage}}"
+                        formControlName="capImage">
+                </div>
+                <div class="col-md-6">
+                    <i (click)="generateCaptcha()" class="fas fa-sync-alt"></i>
+                </div>
+            </div>
+            <div class="row p-2 mb-2">
+                <div class=" col-md-6">
+                    <input type="text" class="form-control" id="textinput" formControlName="capText">
+                </div>
+            </div>
+
+            <div class="p-2 mb-2" action="submit" class="col-md-6">
+                <button type="submit" (click)="onSubmit(captcha) ;"
+                    class="btn btn-lg btn-success btn-block">Submit</button>
+            </div>
+        </form>
+
+    </div>
+</div>
